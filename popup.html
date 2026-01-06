@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 320px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background: #ffffff;
+    }
+    h1 {
+      font-size: 20px;
+      margin: 0 0 8px 0;
+      color: #202124;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo {
+      font-size: 24px;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #5f6368;
+      margin: 0 0 20px 0;
+    }
+    .status {
+      background: #e8f5e9;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .status-icon {
+      font-size: 20px;
+    }
+    .status-text {
+      font-size: 14px;
+      color: #2e7d32;
+      font-weight: 500;
+    }
+    .stats {
+      background: #f8f9fa;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    .stats-title {
+      font-size: 12px;
+      color: #5f6368;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0;
+      padding: 8px 0;
+      border-bottom: 1px solid #e8eaed;
+    }
+    .stat-item:last-child {
+      border-bottom: none;
+    }
+    .stat-label {
+      color: #5f6368;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .stat-emoji {
+      font-size: 16px;
+    }
+    .stat-value {
+      font-weight: 600;
+      color: #202124;
+      font-size: 16px;
+    }
+    .divider {
+      height: 1px;
+      background: #e8eaed;
+      margin: 20px 0;
+    }
+    .support-section {
+      text-align: center;
+    }
+    .support-text {
+      font-size: 14px;
+      color: #5f6368;
+      line-height: 1.5;
+      margin: 10px 0 15px 0;
+    }
+    .donate-btn {
+      width: 100%;
+      padding: 12px;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      margin: 6px 0;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .donate-btn:hover {
+      background: #1557b0;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .secondary-btn {
+      background: white;
+      color: #5f6368;
+      border: 1px solid #dadce0;
+    }
+    .secondary-btn:hover {
+      background: #f8f9fa;
+      border-color: #5f6368;
+    }
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #80868b;
+      margin-top: 15px;
+      line-height: 1.4;
+    }
+    .version {
+      color: #9aa0a6;
+      margin-top: 5px;
+    }
+    .debug {
+      font-size: 10px;
+      color: #ea4335;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    <span class="logo">🚫</span>
+    No YouTube Shorts
+  </h1>
+  <p class="subtitle">Keep YouTube distraction-free</p>
+  
+  <div class="status">
+    <span class="status-icon">✓</span>
+    <span class="status-text">Extension is active</span>
+  </div>
+  
+  <div class="stats">
+    <div class="stats-title">Your Impact</div>
+    <div class="stat-item">
+      <span class="stat-label">
+        <span class="stat-emoji">🔀</span>
+        Shorts Redirected
+      </span>
+      <span class="stat-value" id="redirectCount">-</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">
+        <span class="stat-emoji">📅</span>
+        Days Using Extension
+      </span>
+      <span class="stat-value" id="daysActive">-</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="support-section">
+    <p class="support-text">
+      Enjoying a cleaner YouTube experience? <br>
+      Support continued development! ☕
+    </p>
+    
+    <button class="donate-btn" id="coffeeBtn">
+      ☕ Buy Me a Coffee
+    </button>
+    
+    <button class="donate-btn secondary-btn" id="githubBtn">
+      ⭐ Star on GitHub
+    </button>
+  </div>
+
+  <div class="footer">
+    No data collected • Open source<br>
+    <span class="version">v1.0.0</span>
+  </div>
+
+  <div class="debug" id="debug"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
