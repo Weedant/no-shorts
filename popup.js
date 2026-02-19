@@ -50,6 +50,14 @@ document.getElementById('resetBtn').addEventListener('click', () => {
 });
 
 // ─── External links ───────────────────────────────────────────────────────────
+document.getElementById('settingsBtn').addEventListener('click', () => {
+  if (chrome.runtime.openOptionsPage) {
+    chrome.runtime.openOptionsPage();
+  } else {
+    window.open(chrome.runtime.getURL('options.html'));
+  }
+});
+
 document.getElementById('coffeeBtn').addEventListener('click', () => {
   chrome.tabs.create({ url: 'https://buymeacoffee.com/weedant' });
 });
