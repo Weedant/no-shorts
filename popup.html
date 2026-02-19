@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <style>
@@ -10,6 +11,7 @@
       margin: 0;
       background: #ffffff;
     }
+
     h1 {
       font-size: 20px;
       margin: 0 0 8px 0;
@@ -18,45 +20,160 @@
       align-items: center;
       gap: 8px;
     }
+
     .logo {
       font-size: 24px;
     }
+
     .subtitle {
       font-size: 13px;
       color: #5f6368;
       margin: 0 0 20px 0;
     }
-    .status {
-      background: #e8f5e9;
+
+    /* ── Toggle row ─────────────────────────────────── */
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8f9fa;
       padding: 12px 16px;
       border-radius: 8px;
-      margin: 15px 0;
+      margin-bottom: 12px;
+    }
+
+    .toggle-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #202124;
+    }
+
+    .toggle-sublabel {
+      font-size: 12px;
+      color: #5f6368;
+    }
+
+    /* Checkbox-backed toggle switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      background: #dadce0;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+
+    .slider::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: 3px;
+      top: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.25s;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .switch input:checked+.slider {
+      background: #1a73e8;
+    }
+
+    .switch input:checked+.slider::before {
+      transform: translateX(20px);
+    }
+
+    /* ── Status banner ──────────────────────────────── */
+    .status {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 0 0 15px 0;
       display: flex;
       align-items: center;
       gap: 10px;
+      transition: background 0.3s;
     }
+
+    .status.active {
+      background: #e8f5e9;
+    }
+
+    .status.inactive {
+      background: #fce8e6;
+    }
+
     .status-icon {
       font-size: 20px;
     }
+
     .status-text {
       font-size: 14px;
-      color: #2e7d32;
       font-weight: 500;
+      transition: color 0.3s;
     }
+
+    .status.active .status-text {
+      color: #2e7d32;
+    }
+
+    .status.inactive .status-text {
+      color: #c62828;
+    }
+
+    /* ── Stats ──────────────────────────────────────── */
     .stats {
       background: #f8f9fa;
       padding: 16px;
       border-radius: 8px;
       margin: 15px 0;
     }
+
+    .stats-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
     .stats-title {
       font-size: 12px;
       color: #5f6368;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 12px;
       font-weight: 600;
     }
+
+    .reset-btn {
+      font-size: 11px;
+      color: #5f6368;
+      background: none;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      padding: 2px 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .reset-btn:hover {
+      background: #f1f3f4;
+      border-color: #5f6368;
+    }
+
     .stat-item {
       display: flex;
       justify-content: space-between;
@@ -65,9 +182,11 @@
       padding: 8px 0;
       border-bottom: 1px solid #e8eaed;
     }
+
     .stat-item:last-child {
       border-bottom: none;
     }
+
     .stat-label {
       color: #5f6368;
       font-size: 14px;
@@ -75,29 +194,36 @@
       align-items: center;
       gap: 8px;
     }
+
     .stat-emoji {
       font-size: 16px;
     }
+
     .stat-value {
       font-weight: 600;
       color: #202124;
       font-size: 16px;
     }
+
+    /* ── Divider & support ──────────────────────────── */
     .divider {
       height: 1px;
       background: #e8eaed;
       margin: 20px 0;
     }
+
     .support-section {
       text-align: center;
     }
+
     .support-text {
       font-size: 14px;
       color: #5f6368;
       line-height: 1.5;
       margin: 10px 0 15px 0;
     }
-    .donate-btn {
+
+    .action-btn {
       width: 100%;
       padding: 12px;
       background: #1a73e8;
@@ -114,20 +240,27 @@
       justify-content: center;
       gap: 8px;
     }
-    .donate-btn:hover {
+
+    .action-btn:hover {
       background: #1557b0;
       transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
+
     .secondary-btn {
       background: white;
       color: #5f6368;
       border: 1px solid #dadce0;
     }
+
     .secondary-btn:hover {
       background: #f8f9fa;
       border-color: #5f6368;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
+
+    /* ── Footer ─────────────────────────────────────── */
     .footer {
       text-align: center;
       font-size: 11px;
@@ -135,32 +268,45 @@
       margin-top: 15px;
       line-height: 1.4;
     }
+
     .version {
       color: #9aa0a6;
       margin-top: 5px;
     }
-    .debug {
-      font-size: 10px;
-      color: #ea4335;
-      margin-top: 10px;
-      display: none;
-    }
   </style>
 </head>
+
 <body>
   <h1>
     <span class="logo">🚫</span>
     No YouTube Shorts
   </h1>
   <p class="subtitle">Keep YouTube distraction-free</p>
-  
-  <div class="status">
-    <span class="status-icon">✓</span>
-    <span class="status-text">Extension is active</span>
+
+  <!-- Enable / disable toggle -->
+  <div class="toggle-row">
+    <div>
+      <div class="toggle-label">Block Shorts</div>
+      <div class="toggle-sublabel">Toggle without uninstalling</div>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="enabledToggle" checked>
+      <span class="slider"></span>
+    </label>
   </div>
-  
+
+  <!-- Status banner (reflects toggle state) -->
+  <div class="status active" id="statusBanner">
+    <span class="status-icon" id="statusIcon">✓</span>
+    <span class="status-text" id="statusText">Extension is active</span>
+  </div>
+
+  <!-- Stats -->
   <div class="stats">
-    <div class="stats-title">Your Impact</div>
+    <div class="stats-header">
+      <span class="stats-title">Your Impact</span>
+      <button class="reset-btn" id="resetBtn">Reset</button>
+    </div>
     <div class="stat-item">
       <span class="stat-label">
         <span class="stat-emoji">🔀</span>
@@ -181,26 +327,19 @@
 
   <div class="support-section">
     <p class="support-text">
-      Enjoying a cleaner YouTube experience? <br>
+      Enjoying a cleaner YouTube experience?<br>
       Support continued development! ☕
     </p>
-    
-    <button class="donate-btn" id="coffeeBtn">
-      ☕ Buy Me a Coffee
-    </button>
-    
-    <button class="donate-btn secondary-btn" id="githubBtn">
-      ⭐ Star on GitHub
-    </button>
+    <button class="action-btn" id="coffeeBtn">☕ Buy Me a Coffee</button>
+    <button class="action-btn secondary-btn" id="githubBtn">⭐ Star on GitHub</button>
   </div>
 
   <div class="footer">
     No data collected • Open source<br>
-    <span class="version">v1.0.0</span>
+    <span class="version">v1.1.0</span>
   </div>
-
-  <div class="debug" id="debug"></div>
 
   <script src="popup.js"></script>
 </body>
+
 </html>

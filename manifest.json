@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "No YouTube Shorts",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Automatically removes YouTube Shorts from your feed and redirects Shorts links to standard video pages for a distraction-free experience.",
-  "permissions": [],
+  "permissions": ["storage", "tabs"],
   "host_permissions": ["https://www.youtube.com/*"],
   "content_scripts": [
     {
@@ -25,6 +25,5 @@
       "128": "icons/icon128.png"
     }
   },
-  "permissions": ["storage", "tabs"],
   "author": "weedant"
 }
