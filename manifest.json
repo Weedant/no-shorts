@@ -5,7 +5,6 @@
   "description": "Automatically removes YouTube Shorts from your feed and redirects Shorts links to standard video pages for a distraction-free experience.",
   "permissions": [
     "storage",
-    "tabs",
     "contextMenus",
     "declarativeNetRequest"
   ],

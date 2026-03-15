@@ -223,6 +223,7 @@
 
     // Watch for URL changes
     let lastUrl = location.href;
+    const throttledRunAll = throttle(runAll, 1000);
     const observer = new MutationObserver((mutations) => {
       if (location.href !== lastUrl) {
         lastUrl = location.href;
@@ -232,7 +233,7 @@
 
       const hasAddedNodes = mutations.some(m => m.addedNodes.length > 0);
       if (hasAddedNodes) {
-        throttle(runAll, 1000)();
+        throttledRunAll();
       }
     });
 
